@@ -5,16 +5,17 @@ import SearchBar from './components/search_bar';
 
 const API_KEY = 'AIzaSyAT2I_wl1vRYj5J_34M0LQbzWXz-kHwcK4';
 
-YTSearch({ key: API_KEY, term: 'surfboard' }, function (data) {
-  console.log(data);
-});
-
 // Create a new component. This component should produce some HTML
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state={ video: []};
+    this.state={ videos: []};
+
+    YTSearch({ key: API_KEY, term: 'surfboard' },(videos) => {
+      // This is a ES6 shorthand of assigning videos : videos ( used when both property name and value name are same)
+      this.setState({videos});
+    });
   }
   render() {
     return (
