@@ -8,7 +8,8 @@ class SearchBar extends Component {
 		this.state = { term : ''};
 	}
 	render(){
-        return (<input onChange={(event) => { console.log(event.target.value)}} />);
+		// only manipulate state using setState
+        return (<input onChange={(event) => { this.setState({term : event.target.value});  }} />);
 	};
 
 }
