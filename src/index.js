@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state={ videos: []};
 
-    YTSearch({ key: API_KEY, term: 'surfboard' },(videos) => {
+    YTSearch({ key: API_KEY, term: 'surfboards' },(videos) => {
       // This is a ES6 shorthand of assigning videos : videos ( used when both property name and value name are same)
       this.setState({videos});
     });
