@@ -12,7 +12,7 @@ class SearchBar extends Component {
 		// only manipulate state using setState
 		// Controlled components-->when the value is determined by state
 		return (
-			<div>
+			<div className="search-bar">
 				<input 
 					value={this.state.term}
 					onChange={(event) => { this.setState({ term: event.target.value }); }} 
