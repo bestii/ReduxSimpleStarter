@@ -11,19 +11,27 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state={ videos: []};
+    this.state = {
+      videos: [],
+      selectedVideo: null
+    };
 
-    YTSearch({ key: API_KEY, term: 'surfboards' },(videos) => {
+    YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
       // This is a ES6 shorthand of assigning videos : videos ( used when both property name and value name are same)
-      this.setState({videos});
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
     });
   }
   render() {
     return (
       <div>
         <SearchBar />
-        <VideoDetails  video={this.state.videos[0]} />
-        <VideoList videos={this.state.videos} />
+        <VideoDetails video={this.state.selectedVideo} />
+        <VideoList
+          onVideoSelect={(selectedVideo) => { this.setState({ selectedVideo }) }}
+          videos={this.state.videos} />
       </div>
     );
   };
