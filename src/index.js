@@ -16,7 +16,11 @@ class App extends Component {
       selectedVideo: null
     };
 
-    YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
+    this.videoSearch('surfboards');
+
+  }
+  videoSearch(term) {
+    YTSearch({ key: API_KEY, term: term }, (videos) => {
       // This is a ES6 shorthand of assigning videos : videos ( used when both property name and value name are same)
       this.setState({
         videos: videos,
@@ -27,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={(term) => { this.videoSearch(term) }} />
         <VideoDetails video={this.state.selectedVideo} />
         <VideoList
           onVideoSelect={(selectedVideo) => { this.setState({ selectedVideo }) }}
