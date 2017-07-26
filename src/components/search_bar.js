@@ -4,7 +4,7 @@ class SearchBar extends Component {
 	constructor(props) {
 		// calling parent(ie Component) methods constructor
 		super(props);
-		
+
 		// This assignment is done only once that too only inside the constructor
 		this.state = { term: '' };
 	}
@@ -13,15 +13,20 @@ class SearchBar extends Component {
 		// Controlled components-->when the value is determined by state
 		return (
 			<div className="search-bar">
-				<input 
+				<input
 					value={this.state.term}
-					onChange={(event) => { this.setState({ term: event.target.value }); }} 
+					onChange={(event) => { this.onInputChange(event.target.value)}}
 				/>
 			</div>
-			
+
 
 		);
 	};
+
+	onInputChange(term) {
+		this.setState({term});
+		this.props.onSearchTermChange(term);
+	}
 
 }
 
